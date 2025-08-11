@@ -11,4 +11,8 @@ function required(key: string, defaultValue?: string): string {
 
 export const config = {
   port: parseInt(required('PORT', '5000')),
+  mongodbUri: required('MONGODB_URI', 'mongodb://localhost:27017/mydatabase'),
+  saltRounds: parseInt(required('SALT_ROUNDS', '10')),
+  jwtSecret: required('JWT_SECRET', 'your_jwt_secret'),
+  jwtExpiration: required('JWT_EXPIRATION', '1h'),
 };

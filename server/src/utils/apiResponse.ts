@@ -1,4 +1,5 @@
 import { ApiResponse } from '../types/common.type';
+import { ApiError } from './apiError';
 
 export const successResponse = <T>(data: T, message?: string, statusCode = 200): ApiResponse<T> => {
 	return {
@@ -10,12 +11,12 @@ export const successResponse = <T>(data: T, message?: string, statusCode = 200):
     }
 }
 
-export const errorResponse = (error: string, message?: string, statusCode = 500): ApiResponse<null> => {
+export const errorResponse = (error: ApiError, message?: string, statusCode = 500): ApiResponse<null> => {
     return {
         success: false,
         message,
         data: null,
-        error,
+        error: error,
         statusCode,
     }
 }
